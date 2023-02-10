@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./build/index.js --omit=dev",
+    "build": "tsc -p .",
     "dev": "nodemon app/index.ts"
   },
   "keywords": [],

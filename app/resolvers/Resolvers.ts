@@ -1,4 +1,4 @@
-import blogs from "./dataset";
+import blogs from "../dataset";
 
 const Resolvers = {
   Query: {
