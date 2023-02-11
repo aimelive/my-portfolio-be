@@ -20,16 +20,34 @@ type Message {
 
 type Mutation {
   addBlog(body: String!, imgUrl: String!, intro: String!, tags: String!, title: String!): Blog
+  addProject(imgUrl: String!, platforms: String!, rate: Int!, stack: String!, stars: Int!, title: String!, tools: String!): Project
   addTestimony(email: String!, imgUrl: String!, link: String!, message: String!, username: String!): Testimony
   deleteBlog(id: String!): Message
+  deleteProject(id: String!): Message
   deleteTestimonial(id: String!): Message
   editBlog(body: String, id: String!, imgUrl: String, intro: String, tags: String, title: String): Message
+  editProject(id: String!, imgUrl: String, platforms: String, rate: Int, stack: String, stars: Int, title: String, tools: String): Message
   editTestimonial(id: String!, imgUrl: String, link: String, message: String, username: String): Message
+}
+
+type Project {
+  createdAt: String
+  id: ID
+  imgUrl: String
+  platforms: String
+  rate: Int
+  stack: String
+  stars: Int
+  title: String
+  tools: String
+  updatedAt: String
 }
 
 type Query {
   getAllBlogs: [Blog]
   getBlog(id: String!): Blog
+  project(id: String!): Project
+  projects: [Project]
   testimonials: [Testimony]
 }
 
