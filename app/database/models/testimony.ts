@@ -1,20 +1,20 @@
 import { Sequelize, Model, DataTypes, UUIDV4 } from "sequelize";
 import dbConnection from "../config/db";
 
-class BlogModel extends Model {}
+class TestimonyModel extends Model {}
 
-const BlogConnect = (sequelize: Sequelize) => {
-  BlogModel.init(
+const TestimonyConnect = (sequelize: Sequelize) => {
+  TestimonyModel.init(
     {
       id: {
         primaryKey: true,
         type: DataTypes.STRING,
         defaultValue: UUIDV4,
       },
-      title: DataTypes.STRING,
-      intro: DataTypes.STRING,
-      body: DataTypes.TEXT,
-      slug: { type: DataTypes.STRING, unique: true },
+      username: DataTypes.STRING,
+      message: DataTypes.STRING,
+      email: DataTypes.STRING,
+      link: DataTypes.STRING,
       createdAt: { type: DataTypes.DATE, defaultValue: new Date() },
       updatedAt: {
         type: DataTypes.DATE,
@@ -23,17 +23,16 @@ const BlogConnect = (sequelize: Sequelize) => {
         onUpdate: "SET DEFAULT",
       },
       imgUrl: DataTypes.STRING,
-      tags: DataTypes.STRING,
     },
     {
-      tableName: "blogs",
+      tableName: "testimonials",
       timestamps: true,
       sequelize,
     }
   );
-  return BlogModel;
+  return TestimonyModel;
 };
 
-const Blog = BlogConnect(dbConnection);
+const Testimony = TestimonyConnect(dbConnection);
 
-export default Blog;
+export default Testimony;
