@@ -5,6 +5,12 @@ import {
   getAllBlogs,
   getBlog,
 } from "./blogResolvers";
+import {
+  addTestimony,
+  getAllTestimonials,
+  editTestimonial,
+  deleteTestimonial,
+} from "./testimonyResolvers";
 
 const Resolvers = {
   Query: {
@@ -13,6 +19,7 @@ const Resolvers = {
     getBlog,
     //Projects
     //Testimonials
+    testimonials: getAllTestimonials,
   },
   Mutation: {
     //Blogs
@@ -21,6 +28,9 @@ const Resolvers = {
     deleteBlog,
     //Projects
     //Testimonials
+    addTestimony,
+    editTestimonial,
+    deleteTestimonial,
   },
 };
 

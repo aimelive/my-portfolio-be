@@ -1,13 +1,16 @@
-import BlogModel from "../database/models/blog";
+import Blog from "../database/models/blog";
 import { slugify } from "../utils/helpers";
 
 //Getting all blogs
-export const getAllBlogs = async () => await BlogModel.findAll();
+export const getAllBlogs = async () => {
+  const blogs = await Blog.findAll();
+  return blogs;
+};
 
 export const getBlog = async (_: any, args: any) => {
   try {
     console.log(_); //Parent works in relation ships manner
-    return await BlogModel.findByPk(args.id);
+    return await Blog.findByPk(args.id);
   } catch (error) {
     return {
       message: "Blog not found",
@@ -28,10 +31,10 @@ export const addBlog = async (
 ) => {
   try {
     const slug: string = slugify(args.title);
-    const isBlogExist = await BlogModel.findOne({ where: { slug } });
+    const isBlogExist = await Blog.findOne({ where: { slug } });
     if (isBlogExist) throw new Error("Blog exists");
 
-    const newBlog = await BlogModel.create({
+    const newBlog = await Blog.create({
       ...args,
       slug: slug,
     });
@@ -55,14 +58,14 @@ export const editBlog = async (
 ) => {
   try {
     const { id, title } = args;
-    const isBlogExist = await BlogModel.findByPk(id);
+    const isBlogExist = await Blog.findByPk(id);
     if (!isBlogExist) throw new Error("Blog does not exist");
 
     let slug: string | undefined;
     if (title) {
       slug = slugify(title);
     }
-    await BlogModel.update({ ...args, slug }, { where: { id } });
+    await Blog.update({ ...args, slug }, { where: { id } });
     return { message: "Blog updated successfully" };
   } catch (error: any) {
     return {
@@ -75,7 +78,7 @@ export const editBlog = async (
 export const deleteBlog = async (_: any, args: { id: string }) => {
   const { id } = args;
   try {
-    const blog = await BlogModel.findByPk(id);
+    const blog = await Blog.findByPk(id);
     if (!blog) throw new Error("Blog does not exist");
 
     await blog.destroy();

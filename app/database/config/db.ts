@@ -1,14 +1,10 @@
-import { Sequelize } from "sequelize-typescript";
+import { Sequelize } from "sequelize";
+import * as dotenv from "dotenv";
 
-const dbConnection = new Sequelize({
-  dialect: "mysql",
-  host: "localhost",
-  username: "root",
-  port: 3306,
-  database: "my_portfolio",
-  logging: false,
-  // password: "aimelive",
-  models: ["blogs"],
-});
+dotenv.config();
+
+const DB_URL: string = process.env.DB_URL!;
+
+const dbConnection = new Sequelize(DB_URL, { logging: false });
 
 export default dbConnection;
