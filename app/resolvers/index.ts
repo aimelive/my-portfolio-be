@@ -6,6 +6,13 @@ import {
   getBlog,
 } from "./blogResolvers";
 import {
+  addProject,
+  deleteProject,
+  editProject,
+  getAllProjects,
+  getProject,
+} from "./projectResolver";
+import {
   addTestimony,
   getAllTestimonials,
   editTestimonial,
@@ -18,6 +25,8 @@ const Resolvers = {
     getAllBlogs,
     getBlog,
     //Projects
+    projects: getAllProjects,
+    project: getProject,
     //Testimonials
     testimonials: getAllTestimonials,
   },
@@ -27,6 +36,9 @@ const Resolvers = {
     editBlog,
     deleteBlog,
     //Projects
+    addProject,
+    editProject,
+    deleteProject,
     //Testimonials
     addTestimony,
     editTestimonial,

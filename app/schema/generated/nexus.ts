@@ -43,6 +43,18 @@ export interface NexusGenObjects {
     message?: string | null; // String
   }
   Mutation: {};
+  Project: { // root type
+    createdAt?: string | null; // String
+    id?: string | null; // ID
+    imgUrl?: string | null; // String
+    platforms?: string | null; // String
+    rate?: number | null; // Int
+    stack?: string | null; // String
+    stars?: number | null; // Int
+    title?: string | null; // String
+    tools?: string | null; // String
+    updatedAt?: string | null; // String
+  }
   Query: {};
   Testimony: { // root type
     createdAt?: string | null; // String
@@ -82,15 +94,32 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     addBlog: NexusGenRootTypes['Blog'] | null; // Blog
+    addProject: NexusGenRootTypes['Project'] | null; // Project
     addTestimony: NexusGenRootTypes['Testimony'] | null; // Testimony
     deleteBlog: NexusGenRootTypes['Message'] | null; // Message
+    deleteProject: NexusGenRootTypes['Message'] | null; // Message
     deleteTestimonial: NexusGenRootTypes['Message'] | null; // Message
     editBlog: NexusGenRootTypes['Message'] | null; // Message
+    editProject: NexusGenRootTypes['Message'] | null; // Message
     editTestimonial: NexusGenRootTypes['Message'] | null; // Message
+  }
+  Project: { // field return type
+    createdAt: string | null; // String
+    id: string | null; // ID
+    imgUrl: string | null; // String
+    platforms: string | null; // String
+    rate: number | null; // Int
+    stack: string | null; // String
+    stars: number | null; // Int
+    title: string | null; // String
+    tools: string | null; // String
+    updatedAt: string | null; // String
   }
   Query: { // field return type
     getAllBlogs: Array<NexusGenRootTypes['Blog'] | null> | null; // [Blog]
     getBlog: NexusGenRootTypes['Blog'] | null; // Blog
+    project: NexusGenRootTypes['Project'] | null; // Project
+    projects: Array<NexusGenRootTypes['Project'] | null> | null; // [Project]
     testimonials: Array<NexusGenRootTypes['Testimony'] | null> | null; // [Testimony]
   }
   Testimony: { // field return type
@@ -121,15 +150,32 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     addBlog: 'Blog'
+    addProject: 'Project'
     addTestimony: 'Testimony'
     deleteBlog: 'Message'
+    deleteProject: 'Message'
     deleteTestimonial: 'Message'
     editBlog: 'Message'
+    editProject: 'Message'
     editTestimonial: 'Message'
+  }
+  Project: { // field return type name
+    createdAt: 'String'
+    id: 'ID'
+    imgUrl: 'String'
+    platforms: 'String'
+    rate: 'Int'
+    stack: 'String'
+    stars: 'Int'
+    title: 'String'
+    tools: 'String'
+    updatedAt: 'String'
   }
   Query: { // field return type name
     getAllBlogs: 'Blog'
     getBlog: 'Blog'
+    project: 'Project'
+    projects: 'Project'
     testimonials: 'Testimony'
   }
   Testimony: { // field return type name
@@ -152,6 +198,15 @@ export interface NexusGenArgTypes {
       tags: string; // String!
       title: string; // String!
     }
+    addProject: { // args
+      imgUrl: string; // String!
+      platforms: string; // String!
+      rate: number; // Int!
+      stack: string; // String!
+      stars: number; // Int!
+      title: string; // String!
+      tools: string; // String!
+    }
     addTestimony: { // args
       email: string; // String!
       imgUrl: string; // String!
@@ -160,6 +215,9 @@ export interface NexusGenArgTypes {
       username: string; // String!
     }
     deleteBlog: { // args
+      id: string; // String!
+    }
+    deleteProject: { // args
       id: string; // String!
     }
     deleteTestimonial: { // args
@@ -173,6 +231,16 @@ export interface NexusGenArgTypes {
       tags?: string | null; // String
       title?: string | null; // String
     }
+    editProject: { // args
+      id: string; // String!
+      imgUrl?: string | null; // String
+      platforms?: string | null; // String
+      rate?: number | null; // Int
+      stack?: string | null; // String
+      stars?: number | null; // Int
+      title?: string | null; // String
+      tools?: string | null; // String
+    }
     editTestimonial: { // args
       id: string; // String!
       imgUrl?: string | null; // String
@@ -183,6 +251,9 @@ export interface NexusGenArgTypes {
   }
   Query: {
     getBlog: { // args
+      id: string; // String!
+    }
+    project: { // args
       id: string; // String!
     }
   }
