@@ -7,6 +7,7 @@ const dbConnection = new Sequelize({
   port: 3306,
   database: "my_portfolio",
   logging: false,
+  // password: "aimelive",
   models: ["blogs"],
 });
 

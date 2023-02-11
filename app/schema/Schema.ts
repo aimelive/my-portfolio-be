@@ -35,9 +35,7 @@ const Schema = gql`
       imgUrl: String
       tags: String
     ): Message
-    deleteBlog(
-      id: String!
-    ): Message
+    deleteBlog(id: String!): Message
   }
 `;
 export default Schema;
