@@ -14,6 +14,7 @@ const ContactConnect = (sequelize: Sequelize) => {
       fullName: DataTypes.STRING,
       email: DataTypes.STRING,
       message: DataTypes.TEXT,
+      responded: { type: DataTypes.STRING, defaultValue: "on going" },
       createdAt: { type: DataTypes.DATE, defaultValue: new Date() },
       updatedAt: {
         type: DataTypes.DATE,

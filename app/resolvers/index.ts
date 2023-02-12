@@ -6,6 +6,13 @@ import {
   getBlog,
 } from "./blogResolvers";
 import {
+  addContact,
+  deleteContact,
+  getAllContacts,
+  getContact,
+  respondContact,
+} from "./contactResolvers";
+import {
   addProject,
   deleteProject,
   editProject,
@@ -29,6 +36,9 @@ const Resolvers = {
     project: getProject,
     //Testimonials
     testimonials: getAllTestimonials,
+    //contacts message
+    messages: getAllContacts,
+    message: getContact,
   },
   Mutation: {
     //Blogs
@@ -43,6 +53,10 @@ const Resolvers = {
     addTestimony,
     editTestimonial,
     deleteTestimonial,
+    //contacts message
+    addContact,
+    respondContact,
+    deleteContact,
   },
 };
 
