@@ -15,7 +15,7 @@ export const ContactMutation = extendType({
         email: nonNull(stringArg()),
         message: nonNull(stringArg()),
       },
-      resolve: addContact,
+      resolve: addContact as any,
     });
     t.field("respondContact", {
       type: "Message",

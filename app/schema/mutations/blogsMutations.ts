@@ -13,7 +13,7 @@ export const BlogMutation = extendType({
         imgUrl: nonNull(stringArg()),
         tags: nonNull(stringArg()),
       },
-      resolve: addBlog,
+      resolve: addBlog as any,
     });
     t.field("editBlog", {
       type: "Message",
@@ -25,7 +25,7 @@ export const BlogMutation = extendType({
         imgUrl: stringArg(),
         tags: stringArg(),
       },
-      resolve: editBlog,
+      resolve: editBlog as any,
     });
     t.field("deleteBlog", {
       type: "Message",
