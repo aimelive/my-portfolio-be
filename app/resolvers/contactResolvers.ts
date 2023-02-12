@@ -1,4 +1,5 @@
 import Contact from "../database/models/contact";
+import { mailerCron } from "../utils/mail_task";
 
 //Getting all contacts messages
 export const getAllContacts = async () => await Contact.findAll();
@@ -27,6 +28,7 @@ export const addContact = async (
     const newContact = await Contact.create({
       ...args,
     });
+    mailerCron(args).start();
     return newContact;
   } catch (error: any) {
     console.log("Something went wrong ", error.toString());
