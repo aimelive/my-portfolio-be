@@ -6,14 +6,14 @@ export const ProjectQuery = extendType({
   definition(t) {
     t.list.field("projects", {
       type: "Project",
-      resolve: getAllProjects,
+      resolve: getAllProjects as any,
     });
     t.field("project", {
       type: "Project",
       args: {
         id: nonNull(stringArg()),
       },
-      resolve: getProject,
+      resolve: getProject as any,
     });
   },
 });

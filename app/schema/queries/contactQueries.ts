@@ -6,14 +6,14 @@ export const ContactQuery = extendType({
   definition(t) {
     t.list.field("messages", {
       type: "Contact",
-      resolve: getAllContacts,
+      resolve: getAllContacts as any,
     });
     t.field("message", {
       type: "Contact",
       args: {
         id: nonNull(stringArg()),
       },
-      resolve: getContact,
+      resolve: getContact as any,
     });
   },
 });

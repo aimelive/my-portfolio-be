@@ -6,7 +6,7 @@ export const TestimonialQuery = extendType({
   definition(t) {
     t.list.field("testimonials", {
       type: "Testimony",
-      resolve: getAllTestimonials,
+      resolve: getAllTestimonials as any,
     });
   },
 });

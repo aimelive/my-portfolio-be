@@ -6,14 +6,14 @@ export const BlogQuery = extendType({
   definition(t) {
     t.list.field("getAllBlogs", {
       type: "Blog",
-      resolve: getAllBlogs,
+      resolve: getAllBlogs as any,
     });
     t.field("getBlog", {
       type: "Blog",
       args: {
         id: nonNull(stringArg()),
       },
-      resolve: getBlog,
+      resolve: getBlog as any,
     });
   },
 });

@@ -19,7 +19,7 @@ export const ProjectMutation = extendType({
         platforms: nonNull(stringArg()),
         stack: nonNull(stringArg()),
       },
-      resolve: addProject,
+      resolve: addProject as any,
     });
     t.field("editProject", {
       type: "Message",
@@ -33,7 +33,7 @@ export const ProjectMutation = extendType({
         platforms: stringArg(),
         stack: stringArg(),
       },
-      resolve: editProject,
+      resolve: editProject as any,
     });
     t.field("deleteProject", {
       type: "Message",

@@ -17,7 +17,7 @@ export const TestimonialMutation = extendType({
         imgUrl: nonNull(stringArg()),
         email: nonNull(stringArg()),
       },
-      resolve: addTestimony,
+      resolve: addTestimony as any,
     });
     t.field("editTestimonial", {
       type: "Message",
@@ -28,7 +28,7 @@ export const TestimonialMutation = extendType({
         message: stringArg(),
         imgUrl: stringArg(),
       },
-      resolve: editTestimonial,
+      resolve: editTestimonial as any,
     });
     t.field("deleteTestimonial", {
       type: "Message",
