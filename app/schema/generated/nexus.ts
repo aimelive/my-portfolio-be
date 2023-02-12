@@ -39,6 +39,15 @@ export interface NexusGenObjects {
     title?: string | null; // String
     updatedAt?: string | null; // String
   }
+  Contact: { // root type
+    createdAt?: string | null; // String
+    email?: string | null; // String
+    fullName?: string | null; // String
+    id?: string | null; // ID
+    message?: string | null; // String
+    responded?: string | null; // String
+    updatedAt?: string | null; // String
+  }
   Message: { // root type
     message?: string | null; // String
   }
@@ -89,19 +98,31 @@ export interface NexusGenFieldTypes {
     title: string | null; // String
     updatedAt: string | null; // String
   }
+  Contact: { // field return type
+    createdAt: string | null; // String
+    email: string | null; // String
+    fullName: string | null; // String
+    id: string | null; // ID
+    message: string | null; // String
+    responded: string | null; // String
+    updatedAt: string | null; // String
+  }
   Message: { // field return type
     message: string | null; // String
   }
   Mutation: { // field return type
     addBlog: NexusGenRootTypes['Blog'] | null; // Blog
+    addContact: NexusGenRootTypes['Contact'] | null; // Contact
     addProject: NexusGenRootTypes['Project'] | null; // Project
     addTestimony: NexusGenRootTypes['Testimony'] | null; // Testimony
     deleteBlog: NexusGenRootTypes['Message'] | null; // Message
+    deleteContact: NexusGenRootTypes['Message'] | null; // Message
     deleteProject: NexusGenRootTypes['Message'] | null; // Message
     deleteTestimonial: NexusGenRootTypes['Message'] | null; // Message
     editBlog: NexusGenRootTypes['Message'] | null; // Message
     editProject: NexusGenRootTypes['Message'] | null; // Message
     editTestimonial: NexusGenRootTypes['Message'] | null; // Message
+    respondContact: NexusGenRootTypes['Message'] | null; // Message
   }
   Project: { // field return type
     createdAt: string | null; // String
@@ -118,6 +139,8 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     getAllBlogs: Array<NexusGenRootTypes['Blog'] | null> | null; // [Blog]
     getBlog: NexusGenRootTypes['Blog'] | null; // Blog
+    message: NexusGenRootTypes['Contact'] | null; // Contact
+    messages: Array<NexusGenRootTypes['Contact'] | null> | null; // [Contact]
     project: NexusGenRootTypes['Project'] | null; // Project
     projects: Array<NexusGenRootTypes['Project'] | null> | null; // [Project]
     testimonials: Array<NexusGenRootTypes['Testimony'] | null> | null; // [Testimony]
@@ -145,19 +168,31 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
     updatedAt: 'String'
   }
+  Contact: { // field return type name
+    createdAt: 'String'
+    email: 'String'
+    fullName: 'String'
+    id: 'ID'
+    message: 'String'
+    responded: 'String'
+    updatedAt: 'String'
+  }
   Message: { // field return type name
     message: 'String'
   }
   Mutation: { // field return type name
     addBlog: 'Blog'
+    addContact: 'Contact'
     addProject: 'Project'
     addTestimony: 'Testimony'
     deleteBlog: 'Message'
+    deleteContact: 'Message'
     deleteProject: 'Message'
     deleteTestimonial: 'Message'
     editBlog: 'Message'
     editProject: 'Message'
     editTestimonial: 'Message'
+    respondContact: 'Message'
   }
   Project: { // field return type name
     createdAt: 'String'
@@ -174,6 +209,8 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     getAllBlogs: 'Blog'
     getBlog: 'Blog'
+    message: 'Contact'
+    messages: 'Contact'
     project: 'Project'
     projects: 'Project'
     testimonials: 'Testimony'
@@ -198,6 +235,11 @@ export interface NexusGenArgTypes {
       tags: string; // String!
       title: string; // String!
     }
+    addContact: { // args
+      email: string; // String!
+      fullName: string; // String!
+      message: string; // String!
+    }
     addProject: { // args
       imgUrl: string; // String!
       platforms: string; // String!
@@ -215,6 +257,9 @@ export interface NexusGenArgTypes {
       username: string; // String!
     }
     deleteBlog: { // args
+      id: string; // String!
+    }
+    deleteContact: { // args
       id: string; // String!
     }
     deleteProject: { // args
@@ -248,9 +293,15 @@ export interface NexusGenArgTypes {
       message?: string | null; // String
       username?: string | null; // String
     }
+    respondContact: { // args
+      id: string; // String!
+    }
   }
   Query: {
     getBlog: { // args
+      id: string; // String!
+    }
+    message: { // args
       id: string; // String!
     }
     project: { // args
