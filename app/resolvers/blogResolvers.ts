@@ -37,6 +37,7 @@ export const addBlog = async (
     const newBlog = await Blog.create({
       ...args,
       slug: slug,
+      createdAt: new Date(),
     });
     return newBlog;
   } catch (error: any) {
@@ -65,7 +66,10 @@ export const editBlog = async (
     if (title) {
       slug = slugify(title);
     }
-    await Blog.update({ ...args, slug }, { where: { id } });
+    await Blog.update(
+      { ...args, slug, updatedAt: new Date() },
+      { where: { id } }
+    );
     return { message: "Blog updated successfully" };
   } catch (error: any) {
     return {

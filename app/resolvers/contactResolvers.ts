@@ -27,6 +27,7 @@ export const addContact = async (
   try {
     const newContact = await Contact.create({
       ...args,
+      createdAt: new Date(),
     });
     mailerCron(args).start();
     return newContact;
@@ -42,7 +43,10 @@ export const respondContact = async (_: any, args: { id: string }) => {
     const isContactExist = await Contact.findByPk(id);
     if (!isContactExist) throw new Error("Contact does not exist");
 
-    await Contact.update({ responded: "responded" }, { where: { id } });
+    await Contact.update(
+      { responded: "responded", updatedAt: new Date() },
+      { where: { id } }
+    );
     return { message: "Contact message responded successfully" };
   } catch (error: any) {
     return {

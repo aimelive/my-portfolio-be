@@ -35,6 +35,7 @@ export const addProject = async (
 
     const project = await Project.create({
       ...args,
+      createdAt: new Date(),
     });
     return project;
   } catch (error: any) {
@@ -61,7 +62,7 @@ export const editProject = async (
     const isProjectExist = await Project.findByPk(id);
     if (!isProjectExist) throw new Error("Project does not exist");
 
-    await Project.update({ ...args }, { where: { id } });
+    await Project.update({ ...args, updatedAt: new Date() }, { where: { id } });
     return { message: "Project updated successfully" };
   } catch (error: any) {
     return {

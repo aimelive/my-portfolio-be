@@ -18,6 +18,7 @@ export const addTestimony = async (
   try {
     const newTestimony = await Testimony.create({
       ...args,
+      createdAt: new Date(),
     });
     return newTestimony;
   } catch (error: any) {
@@ -42,7 +43,10 @@ export const editTestimonial = async (
     const isTestimonyExist = await Testimony.findByPk(id);
     if (!isTestimonyExist) throw new Error("Testimony does not exist");
 
-    await Testimony.update({ ...args }, { where: { id } });
+    await Testimony.update(
+      { ...args, updatedAt: new Date() },
+      { where: { id } }
+    );
     return { message: "Testimony updated successfully" };
   } catch (error: any) {
     return {
