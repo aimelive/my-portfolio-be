@@ -1,5 +1,9 @@
 import { extendType, nonNull, stringArg } from "nexus";
-import { getAllBlogs, getBlog } from "../../resolvers/blogResolvers";
+import {
+  getAllBlogs,
+  getBlog,
+  getBlogBySlug,
+} from "../../resolvers/blogResolvers";
 
 export const BlogQuery = extendType({
   type: "Query",
@@ -14,6 +18,13 @@ export const BlogQuery = extendType({
         id: nonNull(stringArg()),
       },
       resolve: getBlog as any,
+    });
+    t.field("getBlogBySlug", {
+      type: "Blog",
+      args: {
+        slug: nonNull(stringArg()),
+      },
+      resolve: getBlogBySlug as any,
     });
   },
 });

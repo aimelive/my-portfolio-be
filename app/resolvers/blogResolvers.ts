@@ -7,10 +7,21 @@ export const getAllBlogs = async () => {
   return blogs;
 };
 
-export const getBlog = async (_: any, args: any) => {
+//Getting blog detailes by its id
+export const getBlog = async (_: any, args: { id: string }) => {
   try {
-    console.log(_); //Parent works in relation ships manner
     return await Blog.findByPk(args.id);
+  } catch (error) {
+    return {
+      message: "Blog not found",
+    };
+  }
+};
+
+//Getting blog by its slug
+export const getBlogBySlug = async (_: any, args: { slug: string }) => {
+  try {
+    return await Blog.findOne({ where: { slug: args.slug } });
   } catch (error) {
     return {
       message: "Blog not found",

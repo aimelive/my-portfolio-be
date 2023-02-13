@@ -4,6 +4,7 @@ import {
   editBlog,
   getAllBlogs,
   getBlog,
+  getBlogBySlug,
 } from "./blogResolvers";
 import {
   addContact,
@@ -31,6 +32,7 @@ const Resolvers = {
     //Blogs
     getAllBlogs,
     getBlog,
+    getBlogBySlug,
     //Projects
     projects: getAllProjects,
     project: getProject,

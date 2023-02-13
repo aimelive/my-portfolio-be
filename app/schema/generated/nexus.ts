@@ -139,6 +139,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     getAllBlogs: Array<NexusGenRootTypes['Blog'] | null> | null; // [Blog]
     getBlog: NexusGenRootTypes['Blog'] | null; // Blog
+    getBlogBySlug: NexusGenRootTypes['Blog'] | null; // Blog
     message: NexusGenRootTypes['Contact'] | null; // Contact
     messages: Array<NexusGenRootTypes['Contact'] | null> | null; // [Contact]
     project: NexusGenRootTypes['Project'] | null; // Project
@@ -209,6 +210,7 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     getAllBlogs: 'Blog'
     getBlog: 'Blog'
+    getBlogBySlug: 'Blog'
     message: 'Contact'
     messages: 'Contact'
     project: 'Project'
@@ -300,6 +302,9 @@ export interface NexusGenArgTypes {
   Query: {
     getBlog: { // args
       id: string; // String!
+    }
+    getBlogBySlug: { // args
+      slug: string; // String!
     }
     message: { // args
       id: string; // String!
