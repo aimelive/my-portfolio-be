@@ -59,6 +59,7 @@ type Project {
 type Query {
   getAllBlogs: [Blog]
   getBlog(id: String!): Blog
+  getBlogBySlug(slug: String!): Blog
   message(id: String!): Contact
   messages: [Contact]
   project(id: String!): Project
